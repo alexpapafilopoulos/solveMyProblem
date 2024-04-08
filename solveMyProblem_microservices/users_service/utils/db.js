@@ -1,25 +1,23 @@
-const Sequelize = require('sequelize')
-require('config').env('localhost')
+const Sequelize = require('sequelize');
+const DB_CONFIG = require("./db_config.js"); // Corrected path
 
-
-const sequelize = new Sequelize (
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-
+const sequelize = new Sequelize(
+    DB_CONFIG.DB,
+    DB_CONFIG.USER,
+    DB_CONFIG.PASSWORD,
     {
-        host: process.env.DB_HOST,
-        dialect: "mysql",
+        host: DB_CONFIG.HOST,
+        dialect: DB_CONFIG.dialect
     }
 );
 
 sequelize
     .authenticate()
     .then(() => {
-        console.log("DATABASE CONNECTED");
+        console.log('DATABASE CONNECTED');
     })
-    .catch((err) => {
-        console.log(err);
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
     });
 
 module.exports = sequelize;
