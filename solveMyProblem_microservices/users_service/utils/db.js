@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const DB_CONFIG = require("./db_config.js"); // Corrected path
-//testing git again
 const sequelize = new Sequelize(
     DB_CONFIG.DB,
     DB_CONFIG.USER,
