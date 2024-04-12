@@ -1,4 +1,5 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize")
+
 const DB_CONFIG = require("./db_config.js"); // Corrected path
 const sequelize = new Sequelize(
     DB_CONFIG.DB,
