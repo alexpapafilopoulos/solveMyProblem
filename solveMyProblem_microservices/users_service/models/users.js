@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../utils/db'); // Import the Sequelize instance
+const sequelize = require('../utils/db');
 
-const User = sequelize.define('User', {
+const User = sequelize.define('Users', {
     userID: {
         autoIncrement: true,
         type: DataTypes.INTEGER,
@@ -21,9 +21,6 @@ const User = sequelize.define('User', {
         type: DataTypes.INTEGER,
         defaultValue: 0
     }
-}, {
-    tableName: 'users', // Specify the table name if different from the model name
-    timestamps: false // Disable timestamps (createdAt and updatedAt columns)
 });
 
 module.exports = User;
