@@ -1,16 +1,18 @@
-//Importing express module
 const express = require('express');
-const sequelize = require("./utils/db");
-
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 const PORT = 4000;
 
-app.listen(PORT, (error) =>{
-        if(!error)
-            console.log("Server is Successfully Running, "
-                + "and App is listening on port "+ PORT)
-        else
-            console.log("Error occurred, server can't start", error);
-    }
-);
+app.use(express.json());
+
+const mysql = require("mysql2");
+
+const {User} =require("./models/users");
+
+
+app.use('/users', userRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
